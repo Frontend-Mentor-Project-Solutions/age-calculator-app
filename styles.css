@@ -1,0 +1,43 @@
+@import "resets.css";
+
+:root {
+  --clr-white: hsl(0 0 100);
+  --clr-black: hsl(0 0 0);
+
+  --clr-grey-500: hsl(0 0 44);
+  --clr-grey-200: hsl(0 0 86);
+  --clr-grey-100: hsl(0 0 94);
+
+  --clr-red-400: hsl(0 100 67);
+  --clr-purple-500: hsl(259 100 65);
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+output {
+  font-size: clamp(3.5rem, -1.5rem + 16.667vw, 6.5rem);
+  font-style: italic;
+  font-weight: 800;
+}
+
+input {
+  font-size: clamp(1.25rem, 0rem + 4.167vw, 2rem);
+  font-weight: 700;
+}
+
+label,
+.error-msg {
+  font-size: clamp(0.75rem, 0.542rem + 0.694vw, 0.875rem);
+}
+
+label {
+  font-weight: 700;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+}
+
+.error-msg {
+  font-style: italic;
+}
