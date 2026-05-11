@@ -29,17 +29,17 @@
         <div class="input-mask">
           <div class="input-wrapper">
             <label for="day">Day</label>
-            <input type="text" id="day" placeholder="DD" maxlength="2" />
+            <input type="text" name="day" placeholder="DD" maxlength="2" />
           </div>
 
           <div class="input-wrapper">
             <label for="month">Month</label>
-            <input type="text" id="month" placeholder="MM" maxlength="2" />
+            <input type="text" name="month" placeholder="MM" maxlength="2" />
           </div>
 
           <div class="input-wrapper">
             <label for="year">Year</label>
-            <input type="text" id="year" placeholder="YYYY" maxlength="4" />
+            <input type="text" name="year" placeholder="YYYY" maxlength="4" />
           </div>
         </div>
 
@@ -59,11 +59,11 @@
         </div>
       </form>
 
-      <output>
-        <p><span id="years">--</span> years</p>
-        <p><span id="months">--</span> months</p>
-        <p><span id="days">--</span> days</p>
-      </output>
+      <output for="year"><span id="year">--</span> years</output>
+
+      <output for="month"><span id="month">--</span> months</output>
+
+      <output for="day"><span id="day">--</span> days</output>
     </main>
   </body>
 </html>
