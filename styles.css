@@ -14,6 +14,8 @@
 
 body {
   font-family: "Poppins", sans-serif;
+  background-color: var(--clr-grey-100);
+  color: var(--clr-black);
 }
 
 output {
@@ -40,4 +42,41 @@ label {
 
 .error-msg {
   font-style: italic;
+}
+
+/* layout */
+
+.page-layout {
+  --content-max-width: 52.5rem;
+  --minimum-content-padding: clamp(1rem, -1.5rem + 8.333vw, 2.5rem);
+
+  --content: min(
+    var(--content-max-width),
+    100% - var(--minimum-content-padding) * 2
+  );
+
+  display: grid;
+  grid-template-columns:
+    minmax(var(--minimum-content-padding), 1fr)
+    [content-start]
+    var(--content)
+    [content-end]
+    minmax(var(--minimum-content-padding), 1fr);
+}
+
+main {
+  background-color: var(--clr-white);
+  grid-column: content;
+  align-self: center;
+  padding-inline: clamp(1.5rem, -1.833rem + 11.111vw, 3.5rem);
+  padding-block: clamp(3rem, 2.167rem + 2.778vw, 3.5rem);
+}
+
+.input-mask {
+  display: flex;
+  gap: clamp(1rem, -0.667rem + 5.556vw, 2rem);
+}
+
+input {
+  width: 100%;
 }
