@@ -80,3 +80,35 @@ main {
 input {
   width: 100%;
 }
+
+/* components */
+
+button {
+  background-color: var(--clr-purple-500);
+  border-radius: 100vw;
+  border: none;
+  display: inline-flex;
+  padding: clamp(1.25rem, 0.833rem + 1.389vw, 1.5rem);
+  cursor: pointer;
+  z-index: 1;
+}
+
+svg {
+  width: clamp(1.5rem, -0.583rem + 6.944vw, 2.75rem);
+  height: clamp(1.5rem, -0.583rem + 6.944vw, 2.75rem);
+}
+
+hr {
+  border-color: transparent;
+  border-top-color: var(--clr-grey-200);
+  width: 100%;
+  position: absolute;
+  margin-block: clamp(2rem, 0.542rem + 4.861vw, 2.875rem);
+}
+
+.button-divider {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+}
