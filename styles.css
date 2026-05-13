@@ -44,6 +44,16 @@ label {
   font-style: italic;
 }
 
+h1 {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
 /* layout */
 
 .page-layout {
@@ -81,8 +91,9 @@ main {
   gap: clamp(1rem, -0.667rem + 5.556vw, 2rem);
 }
 
-input {
-  width: 100%;
+.input-wrapper {
+  flex-grow: 1;
+  flex-basis: 0;
 }
 
 /* components */
