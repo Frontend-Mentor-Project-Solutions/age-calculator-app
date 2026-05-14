@@ -30,7 +30,7 @@ input {
 }
 
 label,
-.error-msg {
+[data-error-for] {
   font-size: clamp(0.75rem, 0.542rem + 0.694vw, 0.875rem);
 }
 
@@ -40,7 +40,7 @@ label {
   text-transform: uppercase;
 }
 
-.error-msg {
+[data-error-for] {
   font-style: italic;
 }
 
@@ -110,11 +110,28 @@ input {
   padding-block: 0.5rem;
   padding-inline-start: 1rem;
   border-radius: 0.5rem;
+  margin-block: 0.5rem;
+
+  &:focus-visible {
+    outline-offset: -1px;
+  }
 }
 
 label {
-  margin-block-end: 0.5rem;
   color: var(--clr-grey-500);
+}
+
+.input-wrapper:has(input[data-valid="false"]) {
+  --state-color: var(--clr-red-400);
+
+  input {
+    border: 1px solid var(--state-color);
+  }
+
+  label,
+  [data-error-for] {
+    color: var(--state-color);
+  }
 }
 
 button {

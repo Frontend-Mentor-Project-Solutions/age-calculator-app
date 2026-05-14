@@ -22,13 +22,13 @@
     <link rel="stylesheet" href="styles.css" />
 
     <script src="https://cdn.jsdelivr.net/npm/@js-temporal/polyfill@0.5.1/dist/index.umd.js"></script>
-    <script src="index.js"></script>
+    <script type="module" src="main.js"></script>
 
     <title>Frontend Mentor | Age calculator app</title>
   </head>
   <body class="page-layout">
     <main>
-      <form onsubmit="submitDOB(event)">
+      <form novalidate>
         <fieldset class="input-mask">
           <legend>
             <h1>Enter your date of birth, and we'll calculate your age!</h1>
@@ -45,10 +45,9 @@
               required
               inputmode="numeric"
               autocomplete="off"
-              onkeypress="handleNumericInput(event)"
-              onblur="validateField(event)"
             />
-            <span id="day-error"></span>
+            <span data-error-for="day"></span>
+            <span data-error-for="date"></span>
           </div>
 
           <div class="input-wrapper">
@@ -62,10 +61,8 @@
               required
               inputmode="numeric"
               autocomplete="off"
-              onkeypress="handleNumericInput(event)"
-              onblur="validateField(event)"
             />
-            <span id="month-error"></span>
+            <span data-error-for="month"></span>
           </div>
 
           <div class="input-wrapper">
@@ -74,13 +71,12 @@
               type="number"
               name="year"
               placeholder="YYYY"
+              min="1"
               required
               inputmode="numeric"
               autocomplete="off"
-              onkeypress="handleNumericInput(event)"
-              onblur="validateField(event)"
             />
-            <span id="year-error"></span>
+            <span data-error-for="year"></span>
           </div>
         </fieldset>
 
@@ -100,11 +96,14 @@
         </div>
       </form>
 
-      <output for="year"><span id="year">--</span> years</output>
+      <output for="year"><span data-output-for="year">--</span> years</output>
 
-      <output for="month"><span id="month">--</span> months</output>
+      <output for="month">
+        <span data-output-for="month">--</span>
+        months
+      </output>
 
-      <output for="day"><span id="day">--</span> days</output>
+      <output for="day"><span data-output-for="day">--</span> days</output>
     </main>
   </body>
 </html>
