@@ -128,10 +128,13 @@ label {
     border: 1px solid var(--state-color);
   }
 
-  label,
-  [data-error-for] {
+  label {
     color: var(--state-color);
   }
+}
+
+[data-error-for] {
+  color: var(--clr-red-400);
 }
 
 button {

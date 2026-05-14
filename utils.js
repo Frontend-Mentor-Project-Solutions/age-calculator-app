@@ -1,19 +1,3 @@
-function validateDOB(dob) {
-  try {
-    Temporal.PlainDate.from(dob, { overflow: "reject" });
-  } catch (error) {
-    console.log(error);
-    displayValidationMessage("date", "Must be a valid date");
-    return;
-  }
-}
-
-// function handleNumericInput(e) {
-//   if (!isFinite(e.key)) {
-//     e.preventDefault();
-//   }
-// }
-
 export function getValidationMessage(input) {
   const { validity, name } = input;
   let validationMessage = "";

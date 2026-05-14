@@ -1,8 +1,6 @@
 import { getValidationMessage, getAge } from "./utils.js";
 
 const form = document.querySelector("form");
-const dayInput = document.querySelector('[name="day"]');
-const monthInput = document.querySelector('[name="month"]');
 const yearInput = document.querySelector('[name="year"]');
 
 const yearOutput = document.querySelector('[data-output-for="year"]');
@@ -14,26 +12,30 @@ yearInput.max = Temporal.Now.plainDateISO().year;
 form.addEventListener("submit", submitDOB);
 document
   .querySelectorAll('input[type="number"]')
-  .forEach((input) => input.addEventListener("input", validateField));
+  .forEach((input) =>
+    input.addEventListener("input", (e) => validateField(e.target)),
+  );
 
 function submitDOB(e) {
   e.preventDefault();
 
-  const form = document.querySelector("form");
   const formData = new FormData(form);
 
   const day = formData.get("day");
   const month = formData.get("month");
   const year = formData.get("year");
 
-  //   const dob = { day, month, year };
+  const dob = { day, month, year };
 
-  const dob = Temporal.PlainDate.from({ year, month, day });
+  const isValid = validateDOB(dob);
 
-  // validateDOB(dob);
+  //const dob = Temporal.PlainDate.from({ year, month, day });
 
-  const age = getAge(dob);
-  displayAge(age);
+  if (isValid) {
+    const validatedDOB = Temporal.PlainDate.from(dob);
+    const age = getAge(validatedDOB);
+    displayAge(age);
+  }
 }
 
 // DISPLAYING
@@ -52,18 +54,50 @@ function displayValidationMessage(input) {
   );
 
   validationMessageEl.textContent = input.validationMessage;
+}
+
+function setDataAttribute(input) {
   input.setAttribute("data-valid", input.validity.valid);
 }
 
 // VALIDATION
 
-function validateField(e) {
-  const input = e.target;
-
+function validateField(input) {
   input.setCustomValidity("");
 
   const message = getValidationMessage(input);
 
   input.setCustomValidity(message);
   displayValidationMessage(input);
+  setDataAttribute(input);
+
+  return input.checkValidity();
+}
+
+function validateDOB(dob) {
+  let isValid = true;
+
+  const dateInputs = document.querySelectorAll('input[type="number"]');
+  const dateErrorEl = document.querySelector('[data-error-for="date"]');
+
+  dateInputs.forEach((input) => validateField(input));
+
+  if (![...dateInputs].every((input) => input.validity.valid)) {
+    isValid = false;
+    return isValid;
+  }
+
+  try {
+    Temporal.PlainDate.from(dob, { overflow: "reject" });
+    isValid = true;
+
+    dateErrorEl.textContent = "";
+  } catch {
+    dateInputs.forEach((input) => input.setAttribute("data-valid", false));
+    dateErrorEl.textContent = "Invalid date for the given month and/or year";
+
+    isValid = false;
+  }
+
+  return isValid;
 }
