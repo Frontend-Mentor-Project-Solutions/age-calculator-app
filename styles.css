@@ -145,6 +145,16 @@ button {
   padding: clamp(1.25rem, 0.833rem + 1.389vw, 1.5rem);
   cursor: pointer;
   z-index: 1;
+  transition: background 200ms ease-in;
+
+  &:hover {
+    background-color: var(--clr-black);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--clr-white);
+    outline-offset: -4px;
+  }
 }
 
 svg {
