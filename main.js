@@ -6,6 +6,7 @@ const yearInput = document.querySelector('[name="year"]');
 const yearOutput = document.querySelector('[data-output-for="year"]');
 const monthOutput = document.querySelector('[data-output-for="month"]');
 const dayOutput = document.querySelector('[data-output-for="day"]');
+const ageAnnouncement = document.querySelector(".age-annoucement");
 
 yearInput.max = Temporal.Now.plainDateISO().year;
 
@@ -46,6 +47,8 @@ function displayAge(age) {
   yearOutput.textContent = years;
   monthOutput.textContent = months;
   dayOutput.textContent = days;
+
+  ageAnnouncement.textContent = `You are ${years} years, ${months} months, and ${days} days old.`;
 }
 
 function displayValidationMessage(input) {

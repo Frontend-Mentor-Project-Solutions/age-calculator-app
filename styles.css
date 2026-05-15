@@ -18,7 +18,7 @@ body {
   color: var(--clr-black);
 }
 
-output {
+.age-output {
   font-size: clamp(3.5rem, -1.5rem + 16.667vw, 6.5rem);
   font-style: italic;
   font-weight: 800;
@@ -44,7 +44,7 @@ label {
   font-style: italic;
 }
 
-h1 {
+.visually-hidden {
   clip: rect(0 0 0 0);
   clip-path: inset(50%);
   height: 1px;
@@ -186,10 +186,7 @@ hr {
   }
 }
 
-output {
-  display: flex;
-  gap: 0.5rem;
-
+.age-output {
   span {
     color: var(--clr-purple-500);
   }

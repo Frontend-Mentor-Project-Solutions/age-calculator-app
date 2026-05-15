@@ -13,7 +13,7 @@ export function getValidationMessage(input) {
   } else if (validity.rangeUnderflow) {
     validationMessage = `${name} must be above ${input.min}`;
   } else if (validity.valueMissing) {
-    validationMessage = `This field is required`;
+    validationMessage = `${name} is required`;
   } else {
     validationMessage = "";
   }

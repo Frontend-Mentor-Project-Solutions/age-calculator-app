@@ -31,7 +31,9 @@
       <form novalidate>
         <fieldset class="input-mask">
           <legend>
-            <h1>Enter your date of birth, and we'll calculate your age!</h1>
+            <h1 class="visually-hidden">
+              Enter your date of birth, and we'll calculate your age!
+            </h1>
           </legend>
 
           <div class="input-wrapper">
@@ -39,6 +41,7 @@
             <input
               type="number"
               name="day"
+              id="day"
               placeholder="DD"
               min="1"
               max="31"
@@ -46,7 +49,7 @@
               inputmode="numeric"
               autocomplete="off"
             />
-            <span data-error-for="day"></span>
+            <span aria-live="polite" data-error-for="day" for="day"></span>
           </div>
 
           <div class="input-wrapper">
@@ -54,6 +57,7 @@
             <input
               type="number"
               name="month"
+              id="month"
               placeholder="MM"
               min="1"
               max="12"
@@ -61,7 +65,7 @@
               inputmode="numeric"
               autocomplete="off"
             />
-            <span data-error-for="month"></span>
+            <span aria-live="polite" data-error-for="month" for="month"></span>
           </div>
 
           <div class="input-wrapper">
@@ -69,16 +73,17 @@
             <input
               type="number"
               name="year"
+              id="year"
               placeholder="YYYY"
               min="1"
               required
               inputmode="numeric"
               autocomplete="off"
             />
-            <span data-error-for="year"></span>
+            <span aria-live="polite" data-error-for="year" for="year"></span>
           </div>
         </fieldset>
-        <span data-error-for="date"></span>
+        <span aria-live="polite" data-error-for="date"></span>
 
         <div class="button-divider">
           <hr />
@@ -96,14 +101,22 @@
         </div>
       </form>
 
-      <output for="year"><span data-output-for="year">--</span> years</output>
-
-      <output for="month">
-        <span data-output-for="month">--</span>
-        months
+      <output class="age-output" aria-hidden="true">
+        <div>
+          <span data-output-for="year">--</span>
+          years
+        </div>
+        <div>
+          <span data-output-for="month">--</span>
+          months
+        </div>
+        <div>
+          <span data-output-for="day">--</span>
+          days
+        </div>
       </output>
 
-      <output for="day"><span data-output-for="day">--</span> days</output>
+      <output class="age-annoucement visually-hidden"></output>
     </main>
   </body>
 </html>
