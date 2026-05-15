@@ -13,6 +13,7 @@ This is a solution to the [Age calculator app challenge on Frontend Mentor](http
   - [My process](#my-process)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
+    - [Validation workflow](#validation-workflow)
     - [Continued development](#continued-development)
     - [Useful resources](#useful-resources)
 
@@ -75,6 +76,21 @@ I also learned how much cleaner date handling is with the **Temporal API**.
 const parsedDOB = Temporal.PlainDate.from(dob, { overflow: "reject" });
 const today = Temporal.Now.plainDateISO();
 const age = today.since(parsedDOB, { largestUnit: "year" });
+```
+
+### Validation workflow
+
+```mermaid
+flowchart TD
+  A[User enters date and submits] --> B[Validate day month year fields]
+  B --> C{Any field invalid?}
+  C -->|Yes| D[Show field errors and stop]
+  C -->|No| E[Parse DOB with Temporal.PlainDate]
+
+  E --> F{Invalid date or future date?}
+  F -->|Yes| G[Show date-level error and stop]
+  F -->|No| H[Calculate age with today.since]
+  H --> I[Display and animate years months days]
 ```
 
 ### Continued development
