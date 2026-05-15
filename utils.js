@@ -33,3 +33,14 @@ export function getAge(dob) {
 
   return age;
 }
+
+export function animateCount(el, targetCount) {
+  const duration = 1000;
+
+  let current = 0;
+  const timer = setInterval(() => {
+    el.textContent = ++current;
+
+    if (current >= targetCount) clearInterval(timer);
+  }, duration / targetCount);
+}

@@ -1,4 +1,4 @@
-import { getValidationMessage, getAge } from "./utils.js";
+import { getValidationMessage, getAge, animateCount } from "./utils.js";
 
 const form = document.querySelector("form");
 const yearInput = document.querySelector('[name="year"]');
@@ -44,9 +44,9 @@ function submitDOB(e) {
 function displayAge(age) {
   const { years, months, days } = age;
 
-  yearOutput.textContent = years;
-  monthOutput.textContent = months;
-  dayOutput.textContent = days;
+  animateCount(yearOutput, years);
+  animateCount(monthOutput, months);
+  animateCount(dayOutput, days);
 
   ageAnnouncement.textContent = `You are ${years} years, ${months} months, and ${days} days old.`;
 }
