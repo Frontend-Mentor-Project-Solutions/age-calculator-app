@@ -91,9 +91,16 @@ function validateDOB(dob) {
   }
 
   try {
-    Temporal.PlainDate.from(dob, { overflow: "reject" });
-    isValid = true;
+    const parsedDOB = Temporal.PlainDate.from(dob, { overflow: "reject" });
+    const today = Temporal.Now.plainDateISO();
 
+    if (Temporal.PlainDate.compare(parsedDOB, today) === 1) {
+      dateInputs.forEach((input) => input.setAttribute("data-valid", false));
+      dateErrorEl.textContent = "Must be in the past";
+      return false;
+    }
+
+    isValid = true;
     dateErrorEl.textContent = "";
   } catch {
     dateInputs.forEach((input) => input.setAttribute("data-valid", false));
