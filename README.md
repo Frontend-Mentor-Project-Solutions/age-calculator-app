@@ -55,7 +55,7 @@ Users should be able to:
 - Modern CSS selectors and states (`:has`, `:focus-visible`)
 - Vanilla JavaScript with ES modules
 - [Constraint Validation API](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation)
-- [Temporal API](https://tc39.es/proposal-temporal/) via `@js-temporal/polyfill`
+- [Temporal API](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal) via `@js-temporal/polyfill`
 
 ### What I learned
 
@@ -101,4 +101,4 @@ The goal is to keep visual validation states more declarative in CSS and reduce 
 ### Useful resources
 
 - [MDN: Constraint validation](https://developer.mozilla.org/en-US/docs/Web/HTML/Constraint_validation) - Helpful for understanding `validity`, `checkValidity()`, and `setCustomValidity()`.
-- [Temporal Proposal Docs](https://tc39.es/proposal-temporal/) - Helpful reference for `PlainDate` parsing, comparison, and duration calculations.
+- [Temporal Docs](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Temporal) - Helpful reference for `PlainDate` parsing, comparison, and duration calculations.
